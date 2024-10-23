@@ -1,11 +1,4 @@
 .card {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
-
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal-width columns */
   gap: 20px; /* Gap between left and right sections */
@@ -63,7 +56,7 @@
     button {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border: none;
+      border: 1px solid $button-color;
       border-radius: 8px;
       cursor: pointer;
 

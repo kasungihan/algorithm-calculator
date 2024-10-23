@@ -22,9 +22,9 @@
         </div>
 
         <div class="form__actions">
-          <PathButton @click="clearForm" buttonType="clear">Clear</PathButton>
-          <PathButton @click="calculatePath" buttonType="calculate"
-            >Calculate</PathButton
+          <ACButton @click="clearForm" buttonType="clear">Clear</ACButton>
+          <ACButton @click="calculatePath" buttonType="calculate"
+            >Calculate</ACButton
           >
         </div>
       </div>
@@ -37,12 +37,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import PathButton from "./PathButton.vue";
-import PathImage from "./PathImage.vue";
+import ACButton from "./ACButton.vue";
+import ACImage from "./ACImage.vue";
 
 export default defineComponent({
-  name: "PathForm",
-  components: { PathButton, PathImage },
+  name: "ACPanel",
+  components: { ACButton, ACImage },
   setup() {
     const fromNode = ref<string>("");
     const toNode = ref<string>("");
@@ -55,7 +55,6 @@ export default defineComponent({
 
     const calculatePath = () => {
       console.log(`Calculating path from ${fromNode.value} to ${toNode.value}`);
-      // Add Dijkstra's algorithm logic here
     };
 
     return {
@@ -68,7 +67,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-/* Add your styles here */
-</style>

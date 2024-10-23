@@ -1,22 +1,22 @@
 <template>
   <div class="container container--centered">
-    <HeaderComponent />
+    <ACCover />
     <div class="content">
-      <PathForm />
+      <ACPanel />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HeaderComponent from "./components/HeaderComponent.vue";
-import PathForm from "./components/PathForm.vue";
+import ACCover from "./components/ACCover.vue";
+import ACPanel from "./components/ACPanel.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    HeaderComponent,
-    PathForm,
+    ACCover,
+    ACPanel,
   },
 });
 </script>

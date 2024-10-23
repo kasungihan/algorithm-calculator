@@ -1,6 +1,7 @@
 <template>
-  <div class="image">
-    <img src="@/assets/images/image-placeholder.png" alt="User" />
+  <div class="result">
+    <label for="">Results</label>
+    <textarea name="" id=""></textarea>
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "PathImage",
+  name: "ACImage",
 });
 </script>
 

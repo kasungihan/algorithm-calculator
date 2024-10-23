@@ -11,10 +11,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HeaderComponent",
+  name: "ACCover",
 });
 </script>
-
-<style scoped>
-/* Add your styles here */
-</style>
