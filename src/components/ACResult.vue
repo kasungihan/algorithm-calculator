@@ -1,7 +1,7 @@
 <template>
   <div class="result">
-    <label for="">Results</label>
-    <textarea name="" id=""></textarea>
+    <label for="result" class="text_primary">Result</label>
+    <textarea id="result" v-model="data"></textarea>
   </div>
 </template>
 
@@ -9,10 +9,29 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "ACImage",
+  name: "ACResult",
+  props: {
+    data: {
+      type: String,
+      required: true,
+    },
+  },
 });
 </script>
 
 <style scoped>
-/* Add your styles here */
+.result {
+  margin: 10px;
+}
+textarea {
+  display: block;
+  height: 308px;
+  max-width: 350px;
+  width: 320px;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  color: #868686;
+}
 </style>

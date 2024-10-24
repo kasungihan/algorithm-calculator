@@ -1,17 +1,7 @@
 <template>
-  <button :class="buttonClass" @click="handleClick">
+  <button :class="`button ${className}`" @click="handleClick">
     <slot></slot>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      class="icon-button__svg"
-    >
-      <!-- Your SVG path here -->
-      <path
-        d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-1 16H6V6h12v13zM8 8h2v2H8V8zm0 3h2v2H8v-2zm0 3h2v2H8v-2zm3 0h2v2h-2v-2zm0-3h2v2h-2v-2zm0-3h2v2h-2V8zm3 6h2v2h-2v-2zm0-3h2v2h-2v-2zm0-3h2v2h-2V8z"
-      />
-    </svg>
+    <i v-if="icon" :class="`fa-solid fa-${icon}`"></i>
   </button>
 </template>
 
@@ -21,16 +11,18 @@ import { defineComponent, computed } from "vue";
 export default defineComponent({
   name: "ACButton",
   props: {
-    buttonType: {
+    class: {
       type: String,
       required: true,
     },
+    icon: {
+      type: String,
+      default: null,
+    },
   },
   setup(props, { emit }) {
-    const buttonClass = computed(() => {
-      return props.buttonType === "clear"
-        ? "button button--clear"
-        : "button button--calculate";
+    const className = computed(() => {
+      return props.class;
     });
 
     const handleClick = () => {
@@ -38,7 +30,7 @@ export default defineComponent({
     };
 
     return {
-      buttonClass,
+      className,
       handleClick,
     };
   },

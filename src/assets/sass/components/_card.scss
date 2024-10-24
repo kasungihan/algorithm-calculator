@@ -1,0 +1,31 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  gap: 20px; /* Gap between left and right sections */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  &__title {
+    color: $primary-color;
+    margin: 1rem;
+    font-weight: 600;
+    font-size: 20px;
+  }
+}

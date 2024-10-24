@@ -1,35 +1,7 @@
-.card {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-  gap: 20px; /* Gap between left and right sections */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  &__left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  &__title {
-    color: $primary-color;
-  }
-}
-
 .form {
-  background-color: $secondary-color;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  //background-color: $secondary-color;
+  padding: 1rem;
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -45,31 +17,19 @@
       font-size: 1rem;
       border-radius: 8px;
       border: 1px solid #ccc;
+      background: #ffffff;
     }
   }
 
   &__actions {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     width: 100%;
-
-    button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: 1px solid $button-color;
-      border-radius: 8px;
-      cursor: pointer;
-
-      &--clear {
-        background-color: transparent;
-        color: $text-color;
-        border: 1px solid $text-color;
-      }
-
-      &--calculate {
-        background-color: $button-color;
-        color: $secondary-color;
-      }
-    }
   }
+}
+
+.text_primary {
+  color: $primary-color;
+  font-size: 16px;
+  font-weight: 600;
 }

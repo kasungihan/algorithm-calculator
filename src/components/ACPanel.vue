@@ -22,15 +22,23 @@
         </div>
 
         <div class="form__actions">
-          <ACButton @click="clearForm" buttonType="clear">Clear</ACButton>
-          <ACButton @click="calculatePath" buttonType="calculate"
+          <ACButton @click="clearForm" class="button__default">Clear</ACButton>
+          <ACButton
+            @click="calculatePath"
+            class="button__outline_primary"
+            icon="calculator"
             >Calculate</ACButton
           >
         </div>
       </div>
     </div>
-    <div class="card__right">
-      <PathImage />
+    <div class="card__right" :style="`background-color: ${bgColor};`">
+      <div v-if="isResponse">
+        <ACResult :data="result"></ACResult>
+      </div>
+      <div v-else>
+        <ACImage />
+      </div>
     </div>
   </div>
 </template>
@@ -39,14 +47,20 @@
 import { defineComponent, ref } from "vue";
 import ACButton from "./ACButton.vue";
 import ACImage from "./ACImage.vue";
+import ACResult from "./ACResult.vue";
 
 export default defineComponent({
   name: "ACPanel",
-  components: { ACButton, ACImage },
+  components: { ACButton, ACImage, ACResult },
   setup() {
     const fromNode = ref<string>("");
     const toNode = ref<string>("");
     const nodes = ref<string[]>(["Node A", "Node B", "Node C", "Node D"]);
+
+    const isResponse = ref<boolean>(true);
+    const result = ref<string>("Node A");
+
+    const bgColor = isResponse ? "#ededed" : "#ffffff";
 
     const clearForm = () => {
       fromNode.value = "";
@@ -58,6 +72,9 @@ export default defineComponent({
     };
 
     return {
+      bgColor,
+      isResponse,
+      result,
       fromNode,
       toNode,
       nodes,
