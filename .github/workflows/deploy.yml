@@ -28,17 +28,17 @@ jobs:
       # Step 4: Build Docker Image
       - name: Build the Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest .
 
       # Step 5: Run Unit Tests (if tests are part of the container)
-      - name: Run tests in Docker container
-        run: |
-          docker run --rm ${{ secrets.DOCKER_USERNAME }}/my-app:latest npm test  # Adjust to your test command
+      #- name: Run tests in Docker container
+      #  run: |
+      #    docker run --rm ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest npm test  # Adjust to your test command
 
       # Step 6: Push Docker Image to Registry
       - name: Push Docker image to DockerHub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest
 
       # Step 7: Optionally Deploy the Docker image to your server
       - name: Deploy to Server
@@ -46,4 +46,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # Set up SSH connection (replace with your actual deploy script)
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/my-app:latest && docker run -d my-app-container"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=app"

@@ -28,10 +28,10 @@ See [Reference](https://www.figma.com/design/VOlrHyAO7hscTdhoUdQG6o/Coding-Chall
 ### Install the **Docker**(Option)
 
 To build a image run on base path of project
-`docker build -t algorithm-calendar .`
+`docker build -t kasungihan/algorithm-calendar .`
 
 Up the container to demonstrate the project
-`docker run -it -p 3000:5173 -v ./:/app --name algorithm-calendar-app algorithm-calendar`
+`docker run -it -p 3000:5173 -v ./:/app --name algorithm-calendar-app kasungihan/algorithm-calendar`
 
 ### Lint with [ESLint](https://eslint.org/)
 
