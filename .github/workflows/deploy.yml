@@ -56,4 +56,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # Set up SSH connection (replace with your actual deploy script)
-          ssh -i -i ~/.ssh/algorithm-calendar.pem ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app"
+          ssh -i ~/.ssh/algorithm-calendar.pem ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app"
