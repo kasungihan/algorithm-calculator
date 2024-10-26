@@ -1,9 +1,9 @@
-name: Build, Test, and Deploy Docker Image
+name: Build, Test, and Deploy with Docker Image
 
 on:
   push:
     branches:
-      - main # Change this to your deployment branch
+      - main
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
       # Step 4: Build Docker Image
       - name: Build the Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest -f Dockerfile.prod .
 
       # Step 5: Run Unit Tests (if tests are part of the container)
       #- name: Run tests in Docker container
@@ -46,4 +46,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # Set up SSH connection (replace with your actual deploy script)
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=app"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app"
