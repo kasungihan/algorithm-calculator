@@ -40,10 +40,20 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest
 
-      # Step 7: Optionally Deploy the Docker image to your server
+      # Step 7: Set up the SSH key for connecting to your server
+      - name: Add SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/algorithm-calendar.pem
+          chmod 600 ~/.ssh/algorithm-calendar.pem
+          ssh-keyscan -H 3.108.235.202 >> ~/.ssh/known_hosts
+
+      # Step 8: Optionally Deploy the Docker image to your server
       - name: Deploy to Server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # Set up SSH connection (replace with your actual deploy script)
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app"
+          ssh -i -i ~/.ssh/algorithm-calendar.pem ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app"
