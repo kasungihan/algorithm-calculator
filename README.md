@@ -27,16 +27,20 @@ See [Reference](https://www.figma.com/design/VOlrHyAO7hscTdhoUdQG6o/Coding-Chall
 
 ### Install the **Docker**(Option)
 
-Build a image for running on development environment
+1. Build a image for running on development environment
+
 `docker build -t kasungihan/algorithm-calendar:dev -f Dockerfile.dev .`
 
-Up the container to preview the demo on browser: http://loocalhost:3000
+2. Up the container to preview the demo on browser: http://loocalhost:3000
+
 `docker run -it -p 3000:5173 -v ./:/app --name algorithm-calendar-app kasungihan/algorithm-calendar:dev`
 
-Build a image for running on production environment
+1. Build a image for running on production environment
+
 `docker build -t kasungihan/algorithm-calendar:latest -f Dockerfile.prod .`
 
-Up the container to load on browser: http://<ip>
+2. Up the container to load on browser: http://<ip>
+
 `docker run -it -p 80:80 --name algorithm-calendar-app kasungihan/algorithm-calendar:latest`
 
 ### Lint with [ESLint](https://eslint.org/)
