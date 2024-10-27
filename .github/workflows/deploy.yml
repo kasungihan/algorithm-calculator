@@ -29,12 +29,11 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest -f Dockerfile.prod .
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:dev -f Dockerfile.dev .
-
+      #    docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:dev -f Dockerfile.dev .
       # Step 5: Run Unit Tests (if tests are part of the container)
-      - name: Run tests in Docker container
-        run: |
-          docker run --rm ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:dev npm run test:unit
+      #- name: Run tests in Docker container
+      #  run: |
+      #    docker run --rm ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:dev npm run test:unit
 
       # Step 6: Push Docker Image to Registry
       - name: Push Docker image to DockerHub

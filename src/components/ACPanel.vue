@@ -91,6 +91,9 @@ export default defineComponent({
           {
             from_node: fromNode.value,
             to_node: toNode.value,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
           }
         );
         isResponse.value = true;
