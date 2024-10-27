@@ -67,7 +67,7 @@ Follow the documentation: [Swagger hub](https://app.swaggerhub.com/apis-docs/KAS
 
 run a test command to ensure the application content
 
-`npm run test`
+`npm run test:unit`
 
 ## Deployment
 
