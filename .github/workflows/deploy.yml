@@ -31,9 +31,9 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest -f Dockerfile.prod .
 
       # Step 5: Run Unit Tests (if tests are part of the container)
-      #- name: Run tests in Docker container
-      #  run: |
-      #    docker run --rm ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest npm test  # Adjust to your test command
+      - name: Run tests in Docker container
+        run: |
+          docker run --rm ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest npm run test:unit
 
       # Step 6: Push Docker Image to Registry
       - name: Push Docker image to DockerHub
@@ -56,4 +56,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # Set up SSH connection (replace with your actual deploy script)
-          ssh -i ~/.ssh/algorithm-calendar.pem ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker run -d -p 80:80 --name=algorithm-calendar-app ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest"
+          ssh -i ~/.ssh/algorithm-calendar.pem ec2-user@3.108.235.202 "docker pull ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest && docker rm -f algorithm-calendar-app && docker run -d -p 80:80 --name=algorithm-calendar-app ${{ secrets.DOCKER_USERNAME }}/algorithm-calendar:latest"
