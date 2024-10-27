@@ -5,7 +5,7 @@
       <div class="form">
         <div class="form__field">
           <label for="from-node">From Node</label>
-          <select v-model="fromNode" id="from-node">
+          <select v-model="fromNode" id="from-node" data-test="from-node">
             <option v-for="node in nodes" :key="node" :value="node">
               {{ node }}
             </option>
@@ -14,7 +14,7 @@
 
         <div class="form__field">
           <label for="to-node">To Node</label>
-          <select v-model="toNode" id="to-node">
+          <select v-model="toNode" id="to-node" data-test="to-node">
             <option v-for="node in nodes" :key="node" :value="node">
               {{ node }}
             </option>
@@ -27,12 +27,16 @@
             @click="calculatePath"
             class="button__outline_primary"
             icon="calculator"
+            data-test="form"
             >Calculate</ACButton
           >
         </div>
       </div>
     </div>
-    <div class="card__right" :style="`background-color: ${bgColor};`">
+    <div
+      class="card__right"
+      :style="`background-color: ${isResponse ? '#ededed' : '#ffffff'}`"
+    >
       <div v-if="isResponse">
         <ACResult :data="result"></ACResult>
       </div>
@@ -44,7 +48,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
+import axios from "axios";
 import ACButton from "./ACButton.vue";
 import ACImage from "./ACImage.vue";
 import ACResult from "./ACResult.vue";
@@ -55,30 +60,58 @@ export default defineComponent({
   setup() {
     const fromNode = ref<string>("");
     const toNode = ref<string>("");
-    const nodes = ref<string[]>(["Node A", "Node B", "Node C", "Node D"]);
+    const nodes = ref<string[]>([]);
 
-    const isResponse = ref<boolean>(true);
-    const result = ref<string>("Node A");
+    const isResponse = ref<boolean>(false);
 
-    const bgColor = isResponse ? "#ededed" : "#ffffff";
+    const result = ref<string>("");
 
     const clearForm = () => {
+      isResponse.value = false;
       fromNode.value = "";
       toNode.value = "";
     };
 
-    const calculatePath = () => {
-      console.log(`Calculating path from ${fromNode.value} to ${toNode.value}`);
+    const getNode = async () => {
+      try {
+        const response = await axios.get(
+          "https://virtserver.swaggerhub.com/KASUNGIHANDEV/algorithm-calendar/1.0.0/nodes"
+        );
+
+        nodes.value = response.data.nodes;
+      } catch (error) {
+        console.error("Error fetching nodes:", error);
+      }
     };
 
+    const calculatePath = async () => {
+      try {
+        const response = await axios.post(
+          "https://virtserver.swaggerhub.com/KASUNGIHANDEV/algorithm-calendar/1.0.0//nodes/calculator",
+          {
+            from_node: fromNode.value,
+            to_node: toNode.value,
+          }
+        );
+        isResponse.value = true;
+        result.value = `From Node Name = "${fromNode.value}", To Node Name = "${toNode.value}": A, B, C, D.\n\nTotal Distance: ${response.data.distance}`;
+      } catch (error) {
+        console.error("Error calculate nodes:", error);
+      }
+    };
+
+    onMounted(() => {
+      getNode();
+    });
+
     return {
-      bgColor,
       isResponse,
       result,
       fromNode,
       toNode,
       nodes,
       clearForm,
+      getNode,
       calculatePath,
     };
   },

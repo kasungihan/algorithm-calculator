@@ -1,7 +1,7 @@
 <template>
   <div class="result">
     <label for="result" class="text_primary">Result</label>
-    <textarea id="result" v-model="data"></textarea>
+    <textarea id="result" v-model="data" data-test="result"></textarea>
   </div>
 </template>
 
