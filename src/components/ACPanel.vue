@@ -85,9 +85,10 @@ export default defineComponent({
     };
 
     const calculatePath = async () => {
+      //TODO:: fix the cross browse issue
       try {
         const response = await axios.post(
-          "https://virtserver.swaggerhub.com/KASUNGIHANDEV/algorithm-calendar/1.0.0//nodes/calculator",
+          "https://cors-anywhere.herokuapp.com/https://virtserver.swaggerhub.com/KASUNGIHANDEV/algorithm-calendar/1.0.0//nodes/calculator",
           {
             from_node: fromNode.value,
             to_node: toNode.value,
