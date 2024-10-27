@@ -8,10 +8,15 @@ See following UI [Reference](https://www.figma.com/design/VOlrHyAO7hscTdhoUdQG6o
 
 ## Coding Standards
 
-- [Vuejs Guide](https://vuejs.org/guide/introduction.html)
+- [JS and Vue](https://eslint.org/)
 - [CSS and Sass Style Guide](https://getbem.com/introduction/)
 
 ## Package Module
+
+- [Vue Framework](https://vuejs.org/guide/introduction.html)
+- [Build Took](https://vite.dev/)
+- [Vue Testing](https://test-utils.vuejs.org/guide/)
+- [Semantic Versioning](https://github.com/conventional-changelog/standard-version)
 
 ## Project Setup
 
@@ -66,12 +71,12 @@ run a test command to ensure the application content
 
 ## Deployment
 
-1. generate latest tag and changelog file
+1. run release, using argument **major**, **minor** or **patch**. To generate latest tag and changelog file
 
-`npm generate`
+`npm run release -- --release-as minor`
 
 2. push to the main repository
 
 `git push --follow-tags origin main`
 
-3. automatically deploy to the live server
+3. automatically deploy latest update to the live server, click the following link: http://ec2-3-108-235-202.ap-south-1.compute.amazonaws.com/
