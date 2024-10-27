@@ -11,11 +11,6 @@ test("calculate the value in api", async () => {
   axios.get.mockResolvedValue({
     data: {
       nodes: nodes,
-    },
-  });
-
-  axios.post.mockResolvedValue({
-    data: {
       distance: distance,
     },
   });
