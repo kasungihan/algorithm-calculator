@@ -13,6 +13,10 @@
     "test:coverage": "jest --coverage",
     "release": "standard-version"
   },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "vue": "^3.5.12"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",
     "@vitejs/plugin-vue": "^5.0.5",
@@ -29,10 +33,6 @@
     "sass-embedded": "^1.80.3",
     "standard-version": "^9.5.0",
     "typescript": "^5.6.3",
-    "vite": "^5.3.1",
-    "vue": "^3.5.12"
-  },
-  "dependencies": {
-    "axios": "^1.7.7"
+    "vite": "^5.3.1"
   }
 }
