@@ -36,19 +36,19 @@ See following UI [Reference](https://www.figma.com/design/VOlrHyAO7hscTdhoUdQG6o
 
 1. Build a image for running on development environment
 
-`docker build -t kasungihan/algorithm-calendar:dev -f Dockerfile.dev .`
+`docker build -t kasungihan/algorithm-calculator:dev -f Dockerfile.dev .`
 
 2. Up the container to preview the demo on browser: http://loocalhost:3000
 
-`docker run -it -p 3000:5173 -v ./:/app --name algorithm-calendar-app kasungihan/algorithm-calendar:dev`
+`docker run -it -p 3000:5173 -v ./:/app --name algorithm-calculator-app kasungihan/algorithm-calculator:dev`
 
 1. Build a image for running on production environment
 
-`docker build -t kasungihan/algorithm-calendar:latest -f Dockerfile.prod .`
+`docker build -t kasungihan/algorithm-calculator:latest -f Dockerfile.prod .`
 
 2. Up the container to load on browser: http://ec2-3-108-235-202.ap-south-1.compute.amazonaws.com/
 
-`docker run -it -p 80:80 --name algorithm-calendar-app kasungihan/algorithm-calendar:latest`
+`docker run -it -p 80:80 --name algorithm-calculator-app kasungihan/algorithm-calculator:latest`
 
 ### Lint with [ESLint](https://eslint.org/)
 
